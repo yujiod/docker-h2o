@@ -17,7 +17,7 @@ RUN git clone https://github.com/tatsuhiro-t/wslay.git --depth 1 \
     && cd .. \
     && rm -rf wslay
 
-RUN wget -O h2o-latest.tar.gz  "$(wget -O - https://api.github.com/repos/h2o/h2o/releases/latest | grep tarball_url | head -n 1 | cut -d '"' -f 4)"
+RUN wget -O h2o-latest.tar.gz  "$(wget -O - https://api.github.com/repos/h2o/h2o/releases/latest | grep tarball_url | head -n 1 | cut -d '"' -f 4)" \
     && tar xzf h2o-latest.tar.gz \
     && cd "$(ls | grep h2o-h2o)" \
     && cmake -DWITH_BUNDLED_SSL=on -DWITH_MRUBY=on . \
